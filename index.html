@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>ÆLĪĀŠ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-color: #fff;
+        --text-color: #18181b;
+        --accent-color: #7f5af0;
+        --octagram-bg-color: #000000;
+        --menu-bg-transparent: rgba(30, 30, 30, 0.7);
+        --menu-text: #f5f5f7;
+        --menu-hover-bg: rgba(74, 74, 78, 0.85);
+        --menu-button-text-color: #000000;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: var(--bg-color);
+        color: var(--text-color);
+        width: 100vw;
+        height: 100vh;
+        font-family: "Inter", sans-serif;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        min-width: 100vw;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .background-octagram-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 60vw;
+        height: 60vw;
+        max-width: 700px;
+        max-height: 700px;
+        min-width: 320px;
+        min-height: 320px;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.08;
+      }
+      .background-octagram-svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        animation: spin 25s linear infinite;
+      }
+
+      .name {
+        position: relative;
+        z-index: 2;
+        font-family: "DotGothic16", sans-serif;
+        font-size: 8vw;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        color: var(--text-color);
+        text-align: center;
+        line-height: 1;
+        text-transform: uppercase;
+        cursor: default;
+        user-select: none;
+        text-shadow: 0 0 10px var(--bg-color), 0 0 15px var(--bg-color);
+        opacity: 1;
+        transition: letter-spacing 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+          color 0.3s, opacity 0.25s ease-in-out;
+      }
+      .name:hover {
+        letter-spacing: 0.15em;
+        color: var(--accent-color);
+      }
+      .name.hidden-by-menu {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Menu Button (Text) - No Border */
+      .menu-button {
+        position: fixed;
+        top: 25px;
+        right: 30px;
+        z-index: 1001;
+        cursor: pointer;
+        padding: 8px 10px; /* Adjusted padding slightly */
+        font-family: "DotGothic16", sans-serif;
+        font-size: 1.1rem; /* Slightly larger for better presence */
+        font-weight: 400;
+        color: var(--menu-button-text-color);
+        background-color: transparent;
+        /* border: 1.5px solid var(--menu-button-text-color); REMOVED BORDER */
+        border-radius: 4px; /* Can keep for a subtle padded feel on hover bg */
+        transition: color 0.2s, transform 0.1s; /* Updated transition */
+        user-select: none;
+        letter-spacing: 0.05em;
+      }
+      .menu-button:hover {
+        color: var(--accent-color); /* Change text to accent color on hover */
+        /* Optional: background-color: rgba(0,0,0,0.05); for a very subtle hover bg */
+      }
+      .menu-button:active {
+        transform: translateY(1px) scale(0.98); /* More subtle active state */
+      }
+
+      .spotlight-menu {
+        position: fixed;
+        top: 18vh;
+        left: 50%;
+        width: 300px;
+        max-width: 85vw;
+        background: var(--menu-bg-transparent);
+        /* backdrop-filter: blur(12px) saturate(150%); */
+        /* -webkit-backdrop-filter: blur(12px) saturate(150%); */
+        border-radius: 14px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35),
+          0 0 0 0.5px rgba(255, 255, 255, 0.1);
+        padding: 12px;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(-50%, -20px) scale(0.95);
+        transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+          transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.25s;
+        font-family: "Inter", sans-serif;
+      }
+      .spotlight-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, 0) scale(1);
+      }
+      .spotlight-menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .spotlight-menu li a {
+        display: block;
+        padding: 12px 15px;
+        color: var(--menu-text);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        border-radius: 8px;
+        transition: background-color 0.15s ease, color 0.15s ease;
+      }
+      .spotlight-menu li a:hover {
+        background-color: var(--menu-hover-bg);
+        color: #fff;
+      }
+      .spotlight-menu li a:active {
+        background-color: var(--accent-color);
+        color: #fff;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .name {
+          font-size: 12vw;
+          letter-spacing: 0.05em;
+        }
+        .name:hover {
+          letter-spacing: 0.1em;
+        }
+        .menu-button {
+          top: 20px;
+          right: 20px;
+          font-size: 1rem; /* Adjusted */
+          padding: 7px 8px; /* Adjusted */
+        }
+        .spotlight-menu {
+          top: 15vh;
+          width: 280px;
+          max-width: calc(100vw - 40px);
+        }
+      }
+      @media (max-width: 480px) {
+        .name {
+          font-size: 14vw;
+        }
+        .spotlight-menu {
+          padding: 10px;
+        }
+        .spotlight-menu li a {
+          font-size: 1rem;
+          padding: 14px 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background-octagram-container">
+      <svg
+        class="background-octagram-svg"
+        viewBox="0 0 200 200"
+        fill="none"
+        stroke="var(--octagram-bg-color)"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M 198,100 L 31,169 L 100,2 L 169,169 L 2,100 L 169,31 L 100,198 L 31,31 Z"
+        />
+      </svg>
+    </div>
+
+    <div class="name">ÆLĪĀŠ</div>
+
+    <div class="menu-button" id="menuButton">[MENU]</div>
+
+    <nav class="spotlight-menu" id="spotlightMenu">
+      <ul>
+        <li><a href="placeholder.html">ABOUT ME</a></li>
+        <li><a href="placeholder.html">BLOG</a></li>
+        <li><a href="placeholder.html">PROJECTS</a></li>
+        <li><a href="digitalcaviar.html">DIGITAL CAVIAR</a></li>
+      </ul>
+    </nav>
+
+    <script>
+      const menuButton = document.getElementById("menuButton");
+      const spotlightMenu = document.getElementById("spotlightMenu");
+      const nameElement = document.querySelector(".name");
+
+      menuButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const isActive = spotlightMenu.classList.toggle("active");
+
+        if (isActive) {
+          nameElement.classList.add("hidden-by-menu");
+        } else {
+          nameElement.classList.remove("hidden-by-menu");
+        }
+      });
+
+      document.addEventListener("click", (event) => {
+        if (
+          spotlightMenu.classList.contains("active") &&
+          !spotlightMenu.contains(event.target) &&
+          !menuButton.contains(event.target)
+        ) {
+          spotlightMenu.classList.remove("active");
+          nameElement.classList.remove("hidden-by-menu");
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && spotlightMenu.classList.contains("active")) {
+          spotlightMenu.classList.remove("active");
+          nameElement.classList.remove("hidden-by-menu");
+        }
+      });
+    </script>
+  </body>
+</html>
+

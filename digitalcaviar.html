@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>ÆLĪĀŠ | Digital Caviar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-color: #fff;
+        --text-color: #18181b;
+        --accent-color: #7f5af0; /* Accent for hover, if desired */
+        --octagram-bg-color: #000000;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: var(--bg-color);
+        color: var(--text-color);
+        width: 100vw;
+        height: 100vh;
+        font-family: "DotGothic16", sans-serif;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Background Octagram (Same as landing page) */
+      .background-octagram-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 60vw;
+        height: 60vw;
+        max-width: 700px;
+        max-height: 700px;
+        min-width: 320px;
+        min-height: 320px;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.08;
+      }
+      .background-octagram-svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        animation: spin 25s linear infinite;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Page Header for ÆLĪĀŠ link */
+      .page-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 25px 0; /* Adjust vertical padding */
+        text-align: center;
+        z-index: 10;
+      }
+      .home-link {
+        font-family: "DotGothic16", sans-serif;
+        font-size: 1.6rem; /* Smaller size for header link */
+        font-weight: 400;
+        color: var(--text-color);
+        text-decoration: none;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        transition: color 0.2s, letter-spacing 0.2s;
+      }
+      .home-link:hover {
+        color: var(--accent-color);
+        letter-spacing: 0.12em;
+      }
+
+      /* Main Content Area for "caviar.tech" */
+      .content-area {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+        padding: 0; /* Remove padding if header is fixed */
+        box-sizing: border-box;
+        position: relative;
+        z-index: 5;
+      }
+      .caviar-link {
+        font-family: "DotGothic16", sans-serif;
+        font-size: 9vw; /* Huge font size */
+        font-weight: 400;
+        color: var(--text-color); /* Initial and visited color */
+        text-decoration: none;
+        letter-spacing: 0.03em;
+        text-align: center;
+        line-height: 1;
+        text-transform: lowercase; /* "caviar.tech" */
+        transition: transform 0.2s, color 0.2s; /* Added color for hover */
+        user-select: none;
+      }
+      /* Ensure visited link color is the same as unvisited */
+      .caviar-link:visited {
+        color: var(--text-color); /* Explicitly set visited color */
+      }
+      .caviar-link:hover {
+        /* Optional: subtle hover effect, e.g., slight scale or accent color */
+        transform: scale(1.03);
+        color: var(--accent-color); /* Change to accent on hover */
+      }
+      .caviar-link:active {
+        color: var(--text-color); /* Keep color same during click */
+        transform: scale(1.01); /* Slight press effect */
+      }
+      .caviar-link:focus {
+        outline: none; /* Remove focus outline if desired */
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .home-link {
+          font-size: 1.4rem;
+          padding: 20px 0;
+        }
+        .caviar-link {
+          font-size: 12vw;
+        }
+      }
+      @media (max-width: 480px) {
+        .home-link {
+          font-size: 1.2rem;
+        }
+        .caviar-link {
+          font-size: 15vw;
+          letter-spacing: 0.01em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background Octagram -->
+    <div class="background-octagram-container">
+      <svg
+        class="background-octagram-svg"
+        viewBox="0 0 200 200"
+        fill="none"
+        stroke="var(--octagram-bg-color)"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M 198,100 L 31,169 L 100,2 L 169,169 L 2,100 L 169,31 L 100,198 L 31,31 Z"
+        />
+      </svg>
+    </div>
+
+    <!-- Header with ÆLĪĀŠ link -->
+    <header class="page-header">
+      <a href="index.html" class="home-link">ÆLĪĀŠ</a>
+    </header>
+
+    <!-- Main content area -->
+    <main class="content-area">
+      <a
+        href="https://caviar.tech"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="caviar-link"
+      >
+        caviar.tech
+      </a>
+    </main>
+  </body>
+</html>
+

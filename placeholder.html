@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>ÆLĪĀŠ | Coming Soon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-color: #fff;
+        --text-color: #18181b;
+        --accent-color: #7f5af0;
+        --octagram-bg-color: #000000;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: var(--bg-color);
+        color: var(--text-color);
+        width: 100vw;
+        height: 100vh;
+        font-family: "DotGothic16", sans-serif;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: column; /* To stack header and content */
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Background Octagram */
+      .background-octagram-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 60vw;
+        height: 60vw;
+        max-width: 700px;
+        max-height: 700px;
+        min-width: 320px;
+        min-height: 320px;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.08;
+      }
+      .background-octagram-svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        animation: spin 25s linear infinite;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Page Header for ÆLĪĀŠ link */
+      .page-header {
+        position: fixed; /* Keep header at the top */
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 25px 0;
+        text-align: center;
+        z-index: 10;
+      }
+      .home-link {
+        font-family: "DotGothic16", sans-serif;
+        font-size: 1.6rem;
+        font-weight: 400;
+        color: var(--text-color);
+        text-decoration: none;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        transition: color 0.2s, letter-spacing 0.2s;
+      }
+      .home-link:hover {
+        color: var(--accent-color);
+        letter-spacing: 0.12em;
+      }
+
+      /* Main Content Area for "Coming Soon" */
+      .content-area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        z-index: 5;
+        padding-top: 80px; /* Add padding to avoid overlap with fixed header */
+      }
+      .placeholder-title {
+        font-size: 7vw;
+        font-weight: 400;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.5em;
+        text-transform: uppercase;
+      }
+      .placeholder-subtitle {
+        font-size: 2.5vw;
+        font-weight: 400;
+        letter-spacing: 0.03em;
+        opacity: 0.7;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .home-link {
+          font-size: 1.4rem;
+          padding: 20px 0;
+        }
+        .placeholder-title {
+          font-size: 10vw;
+        }
+        .placeholder-subtitle {
+          font-size: 3.5vw;
+        }
+        .content-area {
+          padding-top: 70px;
+        }
+      }
+      @media (max-width: 480px) {
+        .home-link {
+          font-size: 1.2rem;
+        }
+        .placeholder-title {
+          font-size: 12vw;
+        }
+        .placeholder-subtitle {
+          font-size: 4vw;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background Octagram -->
+    <div class="background-octagram-container">
+      <svg
+        class="background-octagram-svg"
+        viewBox="0 0 200 200"
+        fill="none"
+        stroke="var(--octagram-bg-color)"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M 198,100 L 31,169 L 100,2 L 169,169 L 2,100 L 169,31 L 100,198 L 31,31 Z"
+        />
+      </svg>
+    </div>
+
+    <!-- Header with ÆLĪĀŠ link -->
+    <header class="page-header">
+      <a href="index.html" class="home-link">ÆLĪĀŠ</a>
+    </header>
+
+    <!-- Main content area -->
+    <main class="content-area">
+      <h1 class="placeholder-title">Coming Soon</h1>
+      <p class="placeholder-subtitle">This page is under construction.</p>
+    </main>
+  </body>
+</html>
+
